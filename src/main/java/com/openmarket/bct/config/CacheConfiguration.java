@@ -38,6 +38,9 @@ public class CacheConfiguration {
             cm.createCache(com.openmarket.bct.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(com.openmarket.bct.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(com.openmarket.bct.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(com.openmarket.bct.domain.Fee.class.getName(), jcacheConfiguration);
+            cm.createCache(com.openmarket.bct.domain.Invoice.class.getName(), jcacheConfiguration);
+            cm.createCache(com.openmarket.bct.domain.Invoice.class.getName() + ".fees", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

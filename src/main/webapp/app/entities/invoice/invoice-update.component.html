@@ -1,0 +1,119 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-invoice-heading">Create or edit a Invoice</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!invoice.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="invoice.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_month">Month</label>
+                    <input type="number" class="form-control" name="month" id="field_month"
+                        [(ngModel)]="invoice.month" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_year">Year</label>
+                    <input type="number" class="form-control" name="year" id="field_year"
+                        [(ngModel)]="invoice.year" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_createdDate">Created Date</label>
+                    <div class="input-group">
+                        <input id="field_createdDate" type="text" class="form-control" name="createdDate" ngbDatepicker  #createdDateDp="ngbDatepicker" [(ngModel)]="invoice.createdDate"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="createdDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_updatedDate">Updated Date</label>
+                    <div class="input-group">
+                        <input id="field_updatedDate" type="text" class="form-control" name="updatedDate" ngbDatepicker  #updatedDateDp="ngbDatepicker" [(ngModel)]="invoice.updatedDate"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="updatedDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_dueDate">Due Date</label>
+                    <div class="input-group">
+                        <input id="field_dueDate" type="text" class="form-control" name="dueDate" ngbDatepicker  #dueDateDp="ngbDatepicker" [(ngModel)]="invoice.dueDate"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dueDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_displayDate">Display Date</label>
+                    <div class="input-group">
+                        <input id="field_displayDate" type="text" class="form-control" name="displayDate" ngbDatepicker  #displayDateDp="ngbDatepicker" [(ngModel)]="invoice.displayDate"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="displayDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_emailedDate">Emailed Date</label>
+                    <div class="input-group">
+                        <input id="field_emailedDate" type="text" class="form-control" name="emailedDate" ngbDatepicker  #emailedDateDp="ngbDatepicker" [(ngModel)]="invoice.emailedDate"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="emailedDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_emailedToCustomer">Emailed To Customer</label>
+                    <input type="checkbox" class="form-control" name="emailedToCustomer" id="field_emailedToCustomer"
+                        [(ngModel)]="invoice.emailedToCustomer" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_state">State</label>
+                    <select class="form-control" name="state" [(ngModel)]="invoice.state" id="field_state" >
+                        <option value="Draft">Draft</option>
+                        <option value="Final">Final</option>
+                        <option value="Closed">Closed</option>
+                        <option value="Void">Void</option>
+                        <option value="ACCRUAL">ACCRUAL</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_createdBy">Created By</label>
+                    <input type="text" class="form-control" name="createdBy" id="field_createdBy"
+                        [(ngModel)]="invoice.createdBy" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_updatedBy">Updated By</label>
+                    <input type="text" class="form-control" name="updatedBy" id="field_updatedBy"
+                        [(ngModel)]="invoice.updatedBy" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_externalNotes">External Notes</label>
+                    <input type="text" class="form-control" name="externalNotes" id="field_externalNotes"
+                        [(ngModel)]="invoice.externalNotes" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_internalNotes">Internal Notes</label>
+                    <input type="text" class="form-control" name="internalNotes" id="field_internalNotes"
+                        [(ngModel)]="invoice.internalNotes" />
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

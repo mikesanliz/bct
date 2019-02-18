@@ -1,0 +1,78 @@
+<div>
+    <h2 id="page-heading">
+        <span>Invoices</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-invoice" [routerLink]="['/invoice/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Invoice
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="invoices">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="month"><span>Month</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="year"><span>Year</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="createdDate"><span>Created Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="updatedDate"><span>Updated Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="dueDate"><span>Due Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="displayDate"><span>Display Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="emailedDate"><span>Emailed Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="emailedToCustomer"><span>Emailed To Customer</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="state"><span>State</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="createdBy"><span>Created By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="updatedBy"><span>Updated By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="externalNotes"><span>External Notes</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="internalNotes"><span>Internal Notes</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let invoice of invoices ;trackBy: trackId">
+                <td><a [routerLink]="['/invoice', invoice.id, 'view' ]">{{invoice.id}}</a></td>
+                <td>{{invoice.month}}</td>
+                <td>{{invoice.year}}</td>
+                <td>{{invoice.createdDate | date:'mediumDate'}}</td>
+                <td>{{invoice.updatedDate | date:'mediumDate'}}</td>
+                <td>{{invoice.dueDate | date:'mediumDate'}}</td>
+                <td>{{invoice.displayDate | date:'mediumDate'}}</td>
+                <td>{{invoice.emailedDate | date:'mediumDate'}}</td>
+                <td>{{invoice.emailedToCustomer}}</td>
+                <td>{{invoice.state}}</td>
+                <td>{{invoice.createdBy}}</td>
+                <td>{{invoice.updatedBy}}</td>
+                <td>{{invoice.externalNotes}}</td>
+                <td>{{invoice.internalNotes}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/invoice', invoice.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/invoice', invoice.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'invoice', { outlets: { popup: invoice.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

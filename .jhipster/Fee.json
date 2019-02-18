@@ -1,0 +1,75 @@
+{
+    "name": "Fee",
+    "fields": [
+        {
+            "fieldName": "unitPrice",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "quantity",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "subTotal",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "taxTotal",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "taxPercentage",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "updatedDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "createdBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "updatedBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "internalNotes",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "appearanceOrder",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "costId",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "invoice",
+            "otherEntityName": "invoice",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "fees"
+        }
+    ],
+    "changelogDate": "20190218211152",
+    "entityTableName": "t_fee",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

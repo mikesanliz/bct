@@ -1,0 +1,66 @@
+//entity LineItem {
+//	createdBy String,
+//	unitPrice BigDecimal,
+//    quantity Long,
+//    subTotal BigDecimal,
+//    description String,
+//    childSku String,
+//    createdDate LocalDate,
+//    updatedDate LocalDate,
+//    createdBy String,
+//    updatedBy String
+//}
+
+entity Fee (t_fee) {
+	unitPrice BigDecimal,
+    quantity  Long,
+	subTotal BigDecimal,
+	taxTotal  BigDecimal,
+	taxPercentage BigDecimal,
+	description String,
+    createdDate LocalDate,
+    updatedDate LocalDate,
+	createdBy String,
+	updatedBy String,
+	internalNotes String,
+    appearanceOrder Integer,
+	costId String,
+}
+
+enum InvoiceStatus {
+Draft, Final, Closed, Void, ACCRUAL
+}
+
+entity Invoice (t_invoice) {
+	month Integer,
+	year Integer,
+ 	createdDate LocalDate,
+ 	updatedDate LocalDate,
+ 	dueDate LocalDate,
+ 	displayDate LocalDate,
+ 	emailedDate LocalDate,
+ 	emailedToCustomer Boolean,
+ 	state  InvoiceStatus,
+ 	createdBy String,
+ 	updatedBy String,
+ 	externalNotes String,
+ 	internalNotes String
+}
+
+relationship OneToMany {
+  Invoice{fees} to Fee{invoice}
+}
+
+// Set pagination options
+paginate Invoice with infinite-scroll
+paginate Fee with pagination
+
+// Use Data Transfert Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl //except Employee, Job
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
+
