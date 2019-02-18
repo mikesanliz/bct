@@ -1,0 +1,75 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="invoice">
+            <h2><span>Invoice</span> {{invoice.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Month</span></dt>
+                <dd>
+                    <span>{{invoice.month}}</span>
+                </dd>
+                <dt><span>Year</span></dt>
+                <dd>
+                    <span>{{invoice.year}}</span>
+                </dd>
+                <dt><span>Created Date</span></dt>
+                <dd>
+                    <span>{{invoice.createdDate}}</span>
+                </dd>
+                <dt><span>Updated Date</span></dt>
+                <dd>
+                    <span>{{invoice.updatedDate}}</span>
+                </dd>
+                <dt><span>Due Date</span></dt>
+                <dd>
+                    <span>{{invoice.dueDate}}</span>
+                </dd>
+                <dt><span>Display Date</span></dt>
+                <dd>
+                    <span>{{invoice.displayDate}}</span>
+                </dd>
+                <dt><span>Emailed Date</span></dt>
+                <dd>
+                    <span>{{invoice.emailedDate}}</span>
+                </dd>
+                <dt><span>Emailed To Customer</span></dt>
+                <dd>
+                    <span>{{invoice.emailedToCustomer}}</span>
+                </dd>
+                <dt><span>State</span></dt>
+                <dd>
+                    <span>{{invoice.state}}</span>
+                </dd>
+                <dt><span>Created By</span></dt>
+                <dd>
+                    <span>{{invoice.createdBy}}</span>
+                </dd>
+                <dt><span>Updated By</span></dt>
+                <dd>
+                    <span>{{invoice.updatedBy}}</span>
+                </dd>
+                <dt><span>External Notes</span></dt>
+                <dd>
+                    <span>{{invoice.externalNotes}}</span>
+                </dd>
+                <dt><span>Internal Notes</span></dt>
+                <dd>
+                    <span>{{invoice.internalNotes}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/invoice', invoice.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

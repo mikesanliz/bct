@@ -1,0 +1,81 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="fee">
+            <h2><span>Fee</span> {{fee.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Unit Price</span></dt>
+                <dd>
+                    <span>{{fee.unitPrice}}</span>
+                </dd>
+                <dt><span>Quantity</span></dt>
+                <dd>
+                    <span>{{fee.quantity}}</span>
+                </dd>
+                <dt><span>Sub Total</span></dt>
+                <dd>
+                    <span>{{fee.subTotal}}</span>
+                </dd>
+                <dt><span>Tax Total</span></dt>
+                <dd>
+                    <span>{{fee.taxTotal}}</span>
+                </dd>
+                <dt><span>Tax Percentage</span></dt>
+                <dd>
+                    <span>{{fee.taxPercentage}}</span>
+                </dd>
+                <dt><span>Description</span></dt>
+                <dd>
+                    <span>{{fee.description}}</span>
+                </dd>
+                <dt><span>Created Date</span></dt>
+                <dd>
+                    <span>{{fee.createdDate}}</span>
+                </dd>
+                <dt><span>Updated Date</span></dt>
+                <dd>
+                    <span>{{fee.updatedDate}}</span>
+                </dd>
+                <dt><span>Created By</span></dt>
+                <dd>
+                    <span>{{fee.createdBy}}</span>
+                </dd>
+                <dt><span>Updated By</span></dt>
+                <dd>
+                    <span>{{fee.updatedBy}}</span>
+                </dd>
+                <dt><span>Internal Notes</span></dt>
+                <dd>
+                    <span>{{fee.internalNotes}}</span>
+                </dd>
+                <dt><span>Appearance Order</span></dt>
+                <dd>
+                    <span>{{fee.appearanceOrder}}</span>
+                </dd>
+                <dt><span>Cost Id</span></dt>
+                <dd>
+                    <span>{{fee.costId}}</span>
+                </dd>
+                <dt><span>Invoice</span></dt>
+                <dd>
+                    <div *ngIf="fee.invoiceId">
+                        <a [routerLink]="['/invoice', fee.invoiceId, 'view']">{{fee.invoiceId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/fee', fee.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

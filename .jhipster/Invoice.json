@@ -1,0 +1,75 @@
+{
+    "name": "Invoice",
+    "fields": [
+        {
+            "fieldName": "month",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "year",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "createdDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "updatedDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dueDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "displayDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "emailedDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "emailedToCustomer",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "state",
+            "fieldType": "InvoiceStatus",
+            "fieldValues": "Draft,Final,Closed,Void,ACCRUAL"
+        },
+        {
+            "fieldName": "createdBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "updatedBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "externalNotes",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "internalNotes",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "fees",
+            "otherEntityName": "fee",
+            "otherEntityRelationshipName": "invoice"
+        }
+    ],
+    "changelogDate": "20190218211153",
+    "entityTableName": "t_invoice",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
